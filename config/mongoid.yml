@@ -1,0 +1,10 @@
+development:
+  clients:
+    default:
+      database: sena_test
+      hosts:
+        - mongodb:27017
+      options:
+        read:
+          mode: :primary
+        max_pool_size: 1
