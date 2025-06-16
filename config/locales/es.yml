@@ -4,4 +4,29 @@ es:
   que_es_sena: Qué es SENA?
   planes_precios: Planes y precios
   quienes_somos: Quienes Somos?
-  iniciar_sesion: Iniciar Sessión
+  iniciar_sesion: Iniciar Sesión
+  subscription:
+    simple:
+      name: Básica
+      desc: Subscription Básica
+      feature:
+        feature1: Acceso a un Emoti
+        feature2: Tokens Limitados(15 interacciones dia)
+        feature3: Característica 3
+        feature4: Característica 4
+    complete:
+      name: Completa
+      desc: Subscription Completa
+      feature:
+        feature1: Unlimited access to all Emoti
+        feature2: Tokens Limitados(15 interacciones dia)
+        feature3: Característica 3
+        feature4: Característica 4
+    unlimited:
+      name: Ilimitada
+      desc: Subscription ilimitada
+      feature:
+        feature1: Unlimited access to all Emoti
+        feature2: Tokens ilimitados
+        feature3: Característica 3
+        feature4: Característica 4

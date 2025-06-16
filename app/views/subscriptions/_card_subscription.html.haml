@@ -1,0 +1,17 @@
+.subscription-card
+  .subscription-header
+    %h1.subscription-name= I18n.t(subscription.name)
+
+    %p.subscription-price
+      %span.subscription-price-amount
+        = subscription.price
+      %span.subscription-price-frequency
+        = "/#{sec_to_month_str(subscription.duration)}"
+
+  %a.subscription-select-button{href: "/subscriptions/new?subscription_id=#{subscription.type}"}
+    %span Select
+
+  .subscription-features
+    - subscription.features.each do |feature|
+      .subscription-feature
+        = I18n.t(feature)

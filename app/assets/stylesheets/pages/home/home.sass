@@ -1,0 +1,69 @@
+@use "vars"
+.section
+  padding: 2rem
+  text-align: center
+  .characters
+    display: flex
+    justify-content: space-around
+    margin-top: 2rem
+    .character
+      padding: .5rem
+      display: flex
+      flex-direction: column
+      width: 25%
+      .img-container
+        display: flex
+        height: 200px
+        align-items: center
+        justify-content: center
+        img
+          max-width: 100%
+          max-height: 100%
+          object-fit: contain
+
+      h3
+        color: vars.$primary-color
+      .quote
+        font-style: italic
+
+.hero
+  display: flex
+  padding: 2rem
+  background-color: vars.$secondary-color
+  .hero-text
+    flex: 1
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    text-align: center
+    h2
+      font-size: 1.9rem
+      color: vars.$primary-color
+    p
+      font-size: 1.2rem
+    button
+      background-color: vars.$primary-color
+      color: white
+      border: none
+      padding: 0.8rem 1.5rem
+      border-radius: 25px
+      font-size: 1rem
+      cursor: pointer
+  .hero-image
+    flex: 1
+    display: flex
+    justify-content: center
+    align-items: center
+    max-height: 100%
+.testimonial
+  padding: 2rem
+  text-align: center
+  button
+    background-color: vars.$primary-color
+    color: white
+    border: none
+    padding: 0.8rem 1.5rem
+    border-radius: 25px
+    font-size: 1rem
+    cursor: pointer

@@ -1,0 +1,81 @@
+@use 'vars'
+.text-brand-purple
+  color: vars.$brand-purple
+
+.bg-brand-purple
+  background-color: vars.$brand-purple
+
+.bg-brand-purple-light
+  background-color: vars.$brand-purple-light
+
+.hover-bg-brand-purple-dark:hover
+  background-color: vars.$brand-purple-dark
+
+.border-brand-purple
+  border-color: vars.$brand-purple
+
+.focus-ring-brand-purple:focus
+  --tw-ring-color: vars.$brand-purple
+
+.hover-underline:hover
+  text-decoration: underline
+
+  // Form Styles
+.form-container
+  margin: 0 auto
+  padding: vars.$default-padding
+
+  .form-title
+    color: vars.$brand-purple
+
+  .form-description
+    color: vars.$gray-600
+
+  .form-label
+    display: block
+    margin-bottom: 0.5rem
+    color: vars.$gray-700
+
+  .form-input
+    width: 100%
+    padding: 0.5rem
+    border: 1px solid vars.$gray-300
+    border-radius: 0.25rem
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05)
+    &:focus
+      outline: none
+      border-color: vars.$brand-purple
+      box-shadow: 0 0 0 3px rgba(vars.$brand-purple, 0.2)
+    &::placeholder
+      color: vars.$gray-300
+
+  .form-checkbox
+    width: 1rem
+    height: 1rem
+    &:checked
+      background-color: vars.$brand-purple
+      border-color: vars.$brand-purple
+
+  .form-checkbox-label
+    margin-left: 0.5rem
+    color: vars.$gray-700
+
+  .btn-submit
+    width: calc(100% - 1rem)
+    padding: 0.5rem
+    background-color: vars.$brand-purple
+    color: white
+    border: none
+    border-radius: 0.25rem
+    cursor: pointer
+    transition: background-color 0.3s ease
+    &:hover
+      background-color: vars.$brand-purple-dark
+
+  .login-prompt
+    margin-top: 2rem
+    text-align: center
+    color: vars.$gray-600
+
+  .login-link
+    color: vars.$brand-purple

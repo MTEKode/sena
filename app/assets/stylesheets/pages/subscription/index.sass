@@ -1,0 +1,94 @@
+@use "vars"
+.subscriptions-wrapper
+  padding: vars.$default-padding
+  .subscription-card
+    flex: 1
+    display: flex
+    flex-direction: column
+    gap: 1rem
+    border-radius: 0.75rem
+    border: 1px solid vars.$gray-200
+    background-color: white
+    padding: 1.5rem
+    margin-bottom: 1rem
+
+    .subscription-header
+      display: flex
+      flex-direction: column
+      gap: 0.5rem
+
+      .subscription-title-container
+        display: flex
+        justify-content: space-between
+        align-items: center
+
+        .subscription-name
+          color: vars.$dark
+          font-size: 1rem
+          font-weight: bold
+          line-height: 1.25
+
+        .subscription-badge
+          color: vars.$dark
+          font-size: 0.75rem
+          line-height: normal
+          letter-spacing: 0.015em
+          background-color: vars.$light-blue
+          border-radius: 9999px
+          padding: 0.25rem 0.75rem
+          text-align: center
+
+      .subscription-price
+        display: flex
+        align-items: baseline
+        gap: 0.25rem
+        color: vars.$dark
+
+        .subscription-price-amount
+          color: vars.$dark
+          font-size: 2.25rem
+          font-weight: 900
+          line-height: 1
+          letter-spacing: -0.033em
+
+        .subscription-price-frequency
+          color: vars.$dark
+          font-size: 1rem
+          font-weight: bold
+          line-height: 1.25
+
+    .subscription-select-button
+      min-width: 5rem
+      max-width: 30rem
+      cursor: pointer
+      display: flex
+      align-items: center
+      justify-content: center
+      height: 2.5rem
+      padding: 0 1rem
+      background-color: vars.$primary-color
+      color: vars.$light-gray
+      font-size: 0.875rem
+      font-weight: bold
+      line-height: normal
+      letter-spacing: 0.015em
+      border-radius: 9999px
+
+      span
+        overflow: hidden
+        text-overflow: ellipsis
+        white-space: nowrap
+
+    .subscription-features
+      display: flex
+      flex-direction: column
+      gap: 0.5rem
+
+      .subscription-feature
+        font-size: 0.8125rem
+        font-weight: normal
+        line-height: normal
+        color: vars.$dark
+        display: flex
+        gap: 0.75rem
+        align-items: center

@@ -1,0 +1,13 @@
+.header
+  %h1
+    %a{href: '/'}= I18n.t('sena')
+  %nav
+    %ul
+      %li
+        %a{href: '#'}= I18n.t('que_es_sena')
+      %li
+        = link_to(I18n.t('planes_precios'), subscriptions_path)
+      %li
+        %a{href: '#'}= I18n.t('quienes_somos')
+      %li
+        %a{href: '#'}= I18n.t('iniciar_sesion')

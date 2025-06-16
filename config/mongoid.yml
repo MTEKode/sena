@@ -1,9 +1,7 @@
 development:
   clients:
     default:
-      database: sena_test
-      hosts:
-        - mongodb:27017
+      uri: mongodb://localhost:27017/sena_development
       options:
         read:
           mode: :primary
