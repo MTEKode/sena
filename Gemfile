@@ -37,6 +37,10 @@ gem "thruster", require: false
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'html2haml', '~> 2.3'
+  gem 'pry-rails', '~> 0.3.11'
 end
 
 group :test do
@@ -47,4 +51,5 @@ end
 
 gem 'mongoid', '~> 9.0', '>= 9.0.6'
 gem 'haml-rails', '~> 2.1'
-gem 'html2haml', '~> 2.3'
+gem 'devise', '~> 4.9', '>= 4.9.4'
+
