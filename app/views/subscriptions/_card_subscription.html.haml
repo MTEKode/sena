@@ -8,7 +8,7 @@
       %span.subscription-price-frequency
         = "/#{sec_to_month_str(subscription.duration)}"
 
-  %a.subscription-select-button{href: "/subscriptions/new?subscription_id=#{subscription.type}"}
+  %a.subscription-select-button{href: new_user_path(subscription_type: subscription.type)}
     %span Select
 
   .subscription-features

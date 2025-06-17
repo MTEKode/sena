@@ -30,3 +30,15 @@ es:
         feature2: Tokens ilimitados
         feature3: Característica 3
         feature4: Característica 4
+  users:
+    new:
+      title: Crear Cuenta en SENA
+      description: Únete a nuestra comunidad y empieza a cuidar de tu bienestar emocional.
+      name_placeholder: Nombre
+      email_placeholder: Correo Electrónico
+      password_placeholder: Contraseña
+      password_confirmation_placeholder: Confirmar Contraseña
+      affiliate_key_placeholder : Codigo de Afiliado
+      create_account: Crear Cuenta
+      already_have_account: ¿Ya tienes una cuenta?
+      login_link: Iniciar Sesión

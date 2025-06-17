@@ -6,8 +6,8 @@ class SubscriptionUser
   belongs_to :subscription
 
 
-  field :until, type: Time
-  field :renewable, type: Boolean
+  field :until, type: Date, default: -> { Date.today + subscription.duration }
+  field :renewable, type: Boolean, default: true
   field :affiliate_key, type: String
   field :paid, type: Float
 end

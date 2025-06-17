@@ -48,7 +48,7 @@ ENV RAILS_ENV development
 EXPOSE 3000
 
 # Configurar el script de entrada para desarrollo
-ENTRYPOINT ["/app/bin/docker-entrypoint"]
+# ENTRYPOINT ["/app/bin/docker-entrypoint"]
 
 # Comando para iniciar el servidor Rails en modo desarrollo
 CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]

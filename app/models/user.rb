@@ -1,6 +1,9 @@
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
+
+  TYPES = %i[user affiliate admin].freeze
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -39,8 +42,20 @@ class User
   # field :locked_at,       type: Time
 
   field :affiliate_key, type: String
-  field :name, type: String
-  field :surname, type: String
-  field :type, type: Symbol
+  field :full_name, type: String
+  field :type, type: Symbol, default: TYPES.first
+  field :terms_accepted, type: Boolean
 
+  validates :terms_accepted, acceptance: { accept: true }
+
+
+  # Method to create a new subscription user
+  def create_subscription_user(subscription_type)
+    subscription = Subscription.find_by(type: subscription_type)
+    return unless subscription
+
+    self.subscription_users.build(subscription: subscription)
+    
+
+  end
 end
