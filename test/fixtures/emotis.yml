@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+flowa:
+  name: "Flowa"
+  description: "Description for Flowa"
+  prompt: "Prompt for Flowa"
+  key: "flowa"
+
+mamari:
+  name: "Mamari"
+  description: "Description for Mamari"
+  prompt: "Prompt for Mamari"
+  key: "mamari"
+
+nova:
+  name: "Nova"
+  description: "Description for Nova"
+  prompt: "Prompt for Nova"
+  key: "nova"
+
+zenna:
+  name: "Zenna"
+  description: "Description for Zenna"
+  prompt: "Prompt for Zenna"
+  key: "zenna"
