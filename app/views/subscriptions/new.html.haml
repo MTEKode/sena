@@ -7,22 +7,18 @@
     .space-y-6
       .form-group
         = form.label :name, class: "form-label"
-        %span Full Name
         = form.text_field :name, class: "form-input", required: true, autocomplete: "name", placeholder: "Full Name"
 
       .form-group
         = form.label :email, class: "form-label"
-        %span Email
         = form.email_field :email, class: "form-input", required: true, autocomplete: "email", placeholder: "Email"
 
       .form-group
         = form.label :password, class: "form-label"
-        %span Password
         = form.password_field :password, class: "form-input", required: true, autocomplete: "new-password", placeholder: "Password"
 
       .form-group
         = form.label :password_confirmation, class: "form-label"
-        %span Confirm Password
         = form.password_field :password_confirmation, class: "form-input", required: true, autocomplete: "new-password", placeholder: "Confirm Password"
 
       .form-group.flex.items-center
