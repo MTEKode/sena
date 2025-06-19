@@ -61,15 +61,13 @@ Rails.application.configure do
 
   
   config.hosts = [
-    IPAddr.new('0.0.0.0/0'),
-    IPAddr.new('::/0'),
+    '0.0.0.0/0',
+    '::/0',
     'localhost',
     '172.19.0.1',
     'symmetrical-halibut-xjx6xr6q4w397w-3000.app.github.dev'
   ]
 
-  config.action_controller.trusted_origins = ["http://localhost:3000", 'symmetrical-halibut-xjx6xr6q4w397w-3000.app.github.dev']
-
-  config.web_console.whitelisted_ips = ['127.0.0.1', '172.19.0.1', '0.0.0.0', '37.223.242.100']
+  config.web_console.whitelisted_ips = ['127.0.0.1', '172.19.0.1', '0.0.0.0', '37.223.242.100', '172.21.0.1']
 
 end

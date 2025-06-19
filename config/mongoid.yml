@@ -1,7 +1,7 @@
 development:
   clients:
     default:
-      uri: mongodb://localhost:27017/sena_development
+      uri: mongodb://mongodb:27017/sena_development
       options:
         read:
           mode: :primary

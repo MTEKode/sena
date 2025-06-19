@@ -7,8 +7,8 @@
       %p.form-description= I18n.t("users.new.description")
     .space-y-6
       .form-group
-        = form.label :name, I18n.t("users.new.name_placeholder"), class: "form-label"
-        = form.text_field :name, class: "form-input", required: true, autocomplete: "name", placeholder: I18n.t("users.new.name_placeholder")
+        = form.label :full_name, I18n.t("users.new.name_placeholder"), class: "form-label"
+        = form.text_field :full_name, class: "form-input", required: true, autocomplete: "name", placeholder: I18n.t("users.new.name_placeholder")
 
       .form-group
         = form.label :email, I18n.t("users.new.email_placeholder"), class: "form-label"
@@ -27,7 +27,7 @@
         = form.text_field :affiliate_key, class: "form-input", autocomplete: "off", placeholder: I18n.t("users.new.affiliate_key_placeholder")
 
       .form-group
-        = form.check_box :terms, class: "form-checkbox", id: "terms"
+        = form.check_box :terms_accepted, class: "form-checkbox"
         %span
           I accept the
           = link_to "Terms of Service", "#", class: "text-brand-purple hover-underline"
