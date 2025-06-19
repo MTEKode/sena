@@ -14,7 +14,8 @@ RUN dnf -y install gcc-c++ \
     xz \
     git \
     vim \
-    curl
+    curl \
+    dos2unix
 
 # Instalar Node.js para gestionar las dependencias de JavaScript
 RUN curl -sL https://rpm.nodesource.com/setup_16.x | bash -
@@ -39,6 +40,8 @@ RUN chmod +x /app/bin/docker-entrypoint
 
 # Copiar el resto de los archivos de la aplicación
 COPY . .
+
+RUN find . -type f -exec dos2unix {} \;
 
 
 # Configurar el entorno de Rails para desarrollo
