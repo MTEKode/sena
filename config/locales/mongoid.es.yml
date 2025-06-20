@@ -1,0 +1,11 @@
+es:
+  mongoid:
+    errors:
+      messages:
+        message_title: "Error"
+        unknown_attribute:
+          message: "Atributo desconocido: %{name}"
+          summary: "Intentaste acceder o modificar el atributo '%{name}', que no está definido en el modelo %{klass}."
+          resolution: "Verifica que el nombre del atributo sea correcto y que esté definido en el modelo."
+        summary_title: "Resumen"
+        resolution_title: "Solución"

@@ -9,7 +9,9 @@ class User
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :subscription_users
+  embeds_many :subscription_users
+  accepts_nested_attributes_for :subscription_users
+
   has_many :chats
 
   ## Database authenticatable
@@ -41,9 +43,8 @@ class User
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
 
-  field :affiliate_key, type: String
   field :full_name, type: String
-  field :type, type: Symbol, default: TYPES.first
+  field :type, type: StringifiedSymbol, default: TYPES.first
   field :terms_accepted, type: Boolean
 
   validates :terms_accepted, acceptance: { accept: true }
@@ -55,7 +56,15 @@ class User
     return unless subscription
 
     self.subscription_users.build(subscription: subscription)
-    
+  end
 
+  # Returns the first active subscription user.
+  # @return [SubscriptionUser] the active subscription user
+  def active_subscription
+    self.subscription_users.where(:until.gt => Date.today).desc(:until).first
+  end
+
+  def active_emotis
+    Emoti.actives.where(id: active_subscription.emoti_ids) if active_subscription
   end
 end

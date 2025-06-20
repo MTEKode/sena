@@ -5,6 +5,7 @@ es:
   planes_precios: Planes y precios
   quienes_somos: Quienes Somos?
   iniciar_sesion: Iniciar Sesión
+  cerrar_sesion: Cerrar Sesión
   subscription:
     simple:
       name: Básica
@@ -42,3 +43,11 @@ es:
       create_account: Crear Cuenta
       already_have_account: ¿Ya tienes una cuenta?
       login_link: Iniciar Sesión
+    sessions:
+      title: Inicia Session en SENA
+      description: Tú comunidad y empieza a cuidar de tu bienestar emocional.
+      remember_me: Recuerdame
+      submit: Entrar
+      no_account: No tienes cuenta?
+      create_account: Crear una cuenta
+

@@ -1,0 +1,44 @@
+.dashboard-container
+  %section.user-section
+    .user-info
+      %h2 Bienvenido,
+      %p.user-name= current_user.full_name || current_user.email
+      %p.user-email= current_user.email
+      .subscription-info
+        %h3 Suscripción
+        - if current_user.active_subscription.present?
+          %p.status.active Estatus: Activa
+          %p.expiry= "Fecha de expiración: #{current_user.active_subscription.until.strftime("%d/%m/%Y")}"
+          %p.days-left= "Días restantes: #{(current_user.active_subscription.until - Date.today).to_i}"
+        - else
+          %p.status.inactive Estatus: Inactiva
+          = link_to "Renovar suscripción", 'subscriptions_path', class: "renew-link"
+
+  %section.emotis-section
+    .wrap
+      %h4 Emotis
+      .emotis-glide
+        = content_tag :div, data: { glide_el: "track" }, class: "glide__track" do
+          = content_tag :ul, class: "glide__slides" do
+            - @emotis.each do |emoti|
+              = content_tag :li, class: "glide__slide" do
+                .emoti-card
+                  .emoti-actions
+                    %p.emoti-description= emoti.quote
+                    %a.emoti-open-chat{href: chat_path(emoti.id)} HABLAR
+                  .emoti-card-info
+                    %h3= emoti.name
+                  .emoti-card-image
+                    = image_tag "emotis/#{emoti.key}.png"
+
+
+:javascript
+  document.addEventListener('DOMContentLoaded', function() {
+    var glideHero = new Glide('.emotis-glide', {
+      type: 'carousel',
+      focusAt: '1',
+      perView: 1
+    });
+
+    glideHero.mount();
+  });

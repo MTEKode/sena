@@ -9,5 +9,7 @@
         = link_to(I18n.t('planes_precios'), subscriptions_path)
       %li
         %a{href: '#'}= I18n.t('quienes_somos')
-      %li
-        %a{href: '#'}= I18n.t('iniciar_sesion')
+      - if user_signed_in?
+        = button_to I18n.t('cerrar_sesion'), logout_path, method: :delete
+      - else
+        = link_to I18n.t('iniciar_sesion'), login_path

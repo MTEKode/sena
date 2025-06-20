@@ -1,0 +1,29 @@
+.form-container
+  = form_for(resource, as: resource_name, url: login_path) do |f|
+    .text-center
+      %h2.form-title= I18n.t("users.sessions.title")
+      %p.form-description= I18n.t("users.sessions.description")
+
+    .space-y-6
+      .form-group
+        = f.label :email, class: "form-label" do
+          = I18n.t("users.new.email_placeholder")
+          = f.email_field :email, class: "form-input", required: true, autocomplete: "email", placeholder: I18n.t("users.new.email_placeholder")
+
+      .form-group
+        = f.label :password, class: "form-label" do
+          = I18n.t("users.new.password_placeholder")
+          = f.password_field :password, class: "form-input", required: true, autocomplete: "current-password", placeholder: I18n.t("users.new.password_placeholder")
+
+      .form-group
+        - if devise_mapping.rememberable?
+          = f.label :remember_me, class: "form-checkbox-label" do
+            = I18n.t("users.sessions.remember_me")
+            = f.check_box :remember_me, class: "form-checkbox"
+
+      .form-group
+        = f.submit I18n.t("users.sessions.submit"), class: "btn-submit"
+
+    %p.login-prompt
+      = I18n.t("users.sessions.no_account")
+      = link_to I18n.t("users.sessions.create_account"), new_user_registration_path, class: "login-link hover-underline"

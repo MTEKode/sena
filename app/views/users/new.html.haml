@@ -1,6 +1,6 @@
 .form-container
   = form_with(model: @user) do |form|
-    - if @subscription
+    - if params[:subscription_type].present?
       = form.hidden_field :subscription_type, value: params[:subscription_type]
     .text-center
       %h2.form-title= I18n.t("users.new.title")

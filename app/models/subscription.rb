@@ -2,9 +2,7 @@ class Subscription
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  has_many :subscription_users
-
-  field :type, type: Symbol
+  field :type, type: StringifiedSymbol
   field :name, type: String
   field :description, type: String
   field :price, type: Float
@@ -14,4 +12,6 @@ class Subscription
 
   scope :active, -> { where(active: true) }
 
+  validates_presence_of :type, :name, :price, :duration
+  validates_uniqueness_of :type
 end
