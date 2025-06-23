@@ -1,7 +1,7 @@
-# Use the GraalVM TruffleRuby base image
+# Usar la imagen base de GraalVM TruffleRuby
 FROM ghcr.io/graalvm/truffleruby-community:latest
 
-# Update the system and install necessary dependencies
+# Actualizar el sistema e instalar dependencias necesarias
 RUN dnf update -y && \
     dnf -y install gcc-c++ \
     glibc-headers \
@@ -18,36 +18,39 @@ RUN dnf update -y && \
     dos2unix && \
     dnf clean all
 
-# Install NVM and Node.js
+# Instalar NVM y Node.js
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash
 ENV NVM_DIR /root/.nvm
 RUN . "$NVM_DIR/nvm.sh" && nvm install 24 && nvm use 24
 
-# Install Bundler and other necessary gems
+# Instalar Bundler y otras gemas necesarias
 RUN gem install bundler
 
-# Create and set the working directory
+# Crear y establecer el directorio de trabajo
 WORKDIR /app
 
-# Copy application files to the container
+# Copiar archivos de la aplicación al contenedor
 COPY Gemfile Gemfile.lock ./
 RUN bundle install --without development test
 
-# Copy the rest of the application files
+# Copiar el resto de los archivos de la aplicación
 COPY . .
 
-# Convert line endings to Unix format
+# Convertir finales de línea a formato Unix
 RUN find . -type f -exec dos2unix {} \;
 
-# Set the Rails environment to production
+# Configurar el entorno de Rails a producción
 ENV RAILS_ENV production
 
-RUN bundle exec rails secret
-# Precompile assets for production
+# Generar secret_key_base y configurarla como variable de entorno
+RUN echo "export SECRET_KEY_BASE=$(bundle exec rails secret)" >> /root/.bashrc
+ENV SECRET_KEY_BASE $(bundle exec rails secret)
+
+# Precompilar assets para producción
 RUN bundle exec rails assets:precompile
 
-# Expose the port on which the Rails application will run
+# Exponer el puerto en el que se ejecutará la aplicación Rails
 EXPOSE 3000
 
-# Command to start the Rails server in production mode
-CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0", "-p", "3000", "-e", "production"]
+# Comando para iniciar el servidor Rails en modo producción
+CMD ["bash", "-c", "source /root/.bashrc && bundle exec rails server -b '0.0.0.0' -p 3000 -e production"]
