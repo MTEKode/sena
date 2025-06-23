@@ -6,3 +6,12 @@ development:
         read:
           mode: :primary
         max_pool_size: 1
+
+production:
+  clients:
+    default:
+      uri: mongodb+srv://kaox:<db_password>@cluster0.mord5x.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      options:
+        server_selection_timeout: 5
+
+

@@ -1,9 +1,9 @@
-# Usar la imagen base de GraalVM TruffleRuby
+# Use the GraalVM TruffleRuby base image
 FROM ghcr.io/graalvm/truffleruby-community:latest
 
-# Actualizar el sistema e instalar dependencias necesarias
-RUN dnf update -y
-RUN dnf -y install gcc-c++ \
+# Update the system and install necessary dependencies
+RUN dnf update -y && \
+    dnf -y install gcc-c++ \
     glibc-headers \
     make \
     patch \
@@ -15,43 +15,37 @@ RUN dnf -y install gcc-c++ \
     git \
     vim \
     curl \
-    dos2unix
+    dos2unix && \
+    dnf clean all
 
-# Instalar Node.js para gestionar las dependencias de JavaScript
+# Install Node.js to manage JavaScript dependencies
 RUN curl -sL https://rpm.nodesource.com/setup_16.x | bash -
-RUN dnf module list nodejs
+RUN dnf install -y nodejs
 
-# Instalar Bundler y otras gemas necesarias
+# Install Bundler and other necessary gems
 RUN gem install bundler
 
-# Crear y establecer el directorio de trabajo
+# Create and set the working directory
 WORKDIR /app
 
-# Copiar los archivos de la aplicación al contenedor
+# Copy application files to the container
 COPY Gemfile Gemfile.lock ./
-RUN bundle install
+RUN bundle install --without development test
 
-# Configuracion de Mongoid
-RUN bundle exec rails g mongoid:config
-
-# Copiar el script de entrada y darle permisos de ejecución
-COPY bin/docker-entrypoint /app/bin/docker-entrypoint
-RUN chmod +x /app/bin/docker-entrypoint
-
-# Copiar el resto de los archivos de la aplicación
+# Copy the rest of the application files
 COPY . .
 
+# Convert line endings to Unix format
 RUN find . -type f -exec dos2unix {} \;
 
+# Set the Rails environment to production
+ENV RAILS_ENV production
 
-# Configurar el entorno de Rails para desarrollo
-ENV RAILS_ENV development
+# Precompile assets for production
+RUN bundle exec rails assets:precompile
 
-# Exponer el puerto en el que la aplicación Rails se ejecutará
+# Expose the port on which the Rails application will run
 EXPOSE 3000
 
-# Configurar el script de entrada para desarrollo
-# ENTRYPOINT ["/app/bin/docker-entrypoint"]
-
-# Comando para iniciar el servidor Rails en modo desarrollo
-CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+# Command to start the Rails server in production mode
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0", "-p", "3000", "-e", "production"]
