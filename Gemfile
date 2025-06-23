@@ -53,4 +53,5 @@ gem 'mongoid', '~> 9.0', '>= 9.0.6'
 gem 'haml-rails', '~> 2.1'
 gem 'devise', '~> 4.9', '>= 4.9.4'
 gem 'rack-cors', '~> 3.0'
+gem 'http', '~> 5.3', '>= 5.3.1'
 

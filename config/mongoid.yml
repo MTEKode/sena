@@ -10,7 +10,7 @@ development:
 production:
   clients:
     default:
-      uri: mongodb+srv://kaox:<db_password>@cluster0.mord5x.mongo.net/?retryWrites=true&w=majority&appName=Cluster0
+      uri: mongodb+srv://kaox:<DB_PASSWORD>@cluster0.mord5x.mongodb.net/sena_production?retryWrites=true&w=majority
       options:
         server_selection_timeout: 5
 
