@@ -31,7 +31,10 @@ WORKDIR /app
 
 # Copy application files to the container
 COPY Gemfile Gemfile.lock .env ./
-RUN bundle install --without development test
+
+# Configure bundle for PROD
+RUN bundle config set without 'development test'
+RUN bundle install
 
 # Copy the rest of the application files
 COPY . .

@@ -9,3 +9,7 @@ es:
           resolution: "Verifica que el nombre del atributo sea correcto y que esté definido en el modelo."
         summary_title: "Resumen"
         resolution_title: "Solución"
+        validations:
+          message: "Los datos proporcionados no son válidos."
+          summary: "Se encontraron los siguientes problemas:"
+          resolution: "Por favor, revisa los datos e intenta de nuevo. Asegúrate de que todos los campos requeridos estén completos y con el formato correcto."

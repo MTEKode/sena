@@ -54,4 +54,6 @@ gem 'haml-rails', '~> 2.1'
 gem 'devise', '~> 4.9', '>= 4.9.4'
 gem 'rack-cors', '~> 3.0'
 gem 'http', '~> 5.3', '>= 5.3.1'
+gem 'concurrent-ruby', '~> 1.3', '>= 1.3.5'
+gem 'dotenv-rails', '~> 3.1', '>= 3.1.8'
 

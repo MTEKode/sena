@@ -6,9 +6,9 @@ class ChatController < ApplicationController
 
   def create
     load_chat
-    @chat.messages.push(Message.new(message_params.to_h))
+    response = @chat.send_message(message_params[:content])
     if @chat.save!
-      render json: { message: 'RESPUESTA GENERADA', sender: 'user' }, status: :created
+      render json: { message: response, sender: 'user' }, status: :created
     else
       render json: { errors: @message.errors.full_messages }, status: :unprocessable_entity
     end
@@ -16,7 +16,7 @@ class ChatController < ApplicationController
 
   private
   def emoti_params
-    params.permit(:emoti_id)
+    params.permit(:id)
   end
 
   def message_params
@@ -28,7 +28,7 @@ class ChatController < ApplicationController
   end
 
   def initialize_chat
-    @chat = current_user.chats.find_or_create_by(emoti_params.to_h)
+    @chat = current_user.chats.find_or_create_by!(emoti_id: emoti_params[:id])
   end
 
   def load_chat

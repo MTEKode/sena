@@ -1,67 +1,13 @@
-.chat-container
+.chat-container{data: {controller: "chat"}}
   = hidden_field_tag 'chat-id', @chat.id.to_s
   .chat-header
     %h2= @chat.emoti.name
-  .chat-messages#chat-messages
+  .chat-messages{data: {chat_target: "messages"}, id: "chat-messages"}
+    - @chat.messages.order_by(created_at: :asc).each do |message|
+      .message{class: message.sender == :user ? 'user' : 'bot'}
+        =raw message.content
+        .timestamp
+          = message.created_at.strftime("%H:%M")
   .chat-input
-    %input#user-input{type: "text", placeholder: "Escribe tu mensaje..."}
-    %button#send-button Enviar
-
-:javascript
-  document.addEventListener('DOMContentLoaded', () => {
-    const chatMessages = document.getElementById('chat-messages');
-    const userInput = document.getElementById('user-input');
-    const sendButton = document.getElementById('send-button');
-    const chatId = document.getElementById('chat-id').value
-
-    // Permitir enviar mensaje con la tecla Enter
-    userInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        sendMessage();
-      }
-    });
-
-    // Manejar el clic en el botón de enviar
-    sendButton.addEventListener('click', sendMessage);
-
-    function sendMessage() {
-      const messageContent = userInput.value.trim();
-      if (messageContent) {
-        addMessage('user', messageContent);
-        userInput.value = '';
-
-        // Enviar mensaje al servidor
-        fetch('/chat', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
-          },
-          body: JSON.stringify({
-            chat: { id: chatId },
-            message: { content: messageContent }
-          })
-        })
-        .then(response => response.json())
-        .then(data => {
-          // Aquí podrías agregar la respuesta del bot desde el servidor
-          // Por ahora, simulamos una respuesta
-          setTimeout(() => {
-            addMessage('bot', data.message);
-          }, 1000);
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          addMessage('bot', 'Lo siento, hubo un error al procesar tu mensaje.');
-        });
-      }
-    }
-
-    function addMessage(sender, text) {
-      const messageDiv = document.createElement('div');
-      messageDiv.classList.add('message', sender);
-      messageDiv.textContent = text;
-      chatMessages.appendChild(messageDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-  });
+    %input#user-input{type: "text", placeholder: "Escribe tu mensaje...", data: {chat_target: "inputField"}}
+    %button#send-button{data: {chat_target: "sendButton"}} Enviar
