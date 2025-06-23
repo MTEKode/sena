@@ -47,7 +47,7 @@ RUN echo "export SECRET_KEY_BASE=$(bundle exec rails secret)" >> /root/.bashrc
 ENV SECRET_KEY_BASE $(bundle exec rails secret)
 
 # Precompile assets for production with trace
-RUN bundle exec rails assets:precompile --trace
+RUN bundle exec rails assets:precompile
 
 # Expose the port on which the Rails application will run
 EXPOSE 3000
