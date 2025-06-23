@@ -30,7 +30,7 @@ RUN gem install bundler
 WORKDIR /app
 
 # Copy application files to the container
-COPY Gemfile Gemfile.lock ./
+COPY Gemfile Gemfile.lock .env ./
 RUN bundle install --without development test
 
 # Copy the rest of the application files
