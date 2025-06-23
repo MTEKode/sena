@@ -18,6 +18,9 @@ RUN dnf update -y && \
     dos2unix && \
     dnf clean all
 
+# Manually import the GPG key for NodeSource
+RUN rpm --import https://rpm.nodesource.com/gpgkey/nodesource.gpg.key
+
 # Install Node.js to manage JavaScript dependencies
 RUN curl -sL https://rpm.nodesource.com/setup_16.x | bash -
 RUN dnf install -y nodejs
