@@ -10,7 +10,7 @@ development:
 production:
   clients:
     default:
-      uri: mongodb+srv://sena_prod:<DB_PASSWORD>@cluster0.mord5x.mongodb.net/sena_production?retryWrites=true&w=majority
+      uri: <%= ENV['DB_URI'] %>
       options:
         server_selection_timeout: 5
 
