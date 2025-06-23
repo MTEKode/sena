@@ -42,6 +42,7 @@ RUN find . -type f -exec dos2unix {} \;
 # Set the Rails environment to production
 ENV RAILS_ENV production
 
+RUN bundle exec rails secret
 # Precompile assets for production
 RUN bundle exec rails assets:precompile
 
