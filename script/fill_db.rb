@@ -4,26 +4,30 @@ Emoti.create!([
                   title: "Equilibrio Emocional",
                   quote: "Tus emociones merecen ser comprendidas",
                   prompt: "Prompt for Flowa",
-                  key: "mamari"
+                  key: "mamari",
+                  active: true
                 },
                 {
                   name: "Vita",
                   title: "Vitalidad Total",
                   quote: "Cuidar tu cuerpo es cuidar tu energía vital",
                   prompt: "Prompt for Mamari",
-                  key: "zenna"
+                  key: "zenna",
+                  active: true
                 },
                 {
                   name: "Nova",
                   quote: "Las relaciones se construyen desde el sentir",
                   prompt: "Prompt for Nova",
-                  key: "flowa"
+                  key: "flowa",
+                  active: true
                 },
                 {
                   name: "Sexualidad y Placer",
                   quote: "Tu placer no necesita permiso",
                   prompt: "Prompt for Zenna",
-                  key: "nova"
+                  key: "nova",
+                  active: true
                 }
               ])
 
