@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     libxml2 \
     libxslt1.1 \
     libyaml-0-2 \
+    libyaml-dev \
     zlib1g \
     libssl3 \
     postgresql-client \
