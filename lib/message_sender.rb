@@ -1,6 +1,6 @@
 class MessageSender
-  def initialize(emoti)
-    @emoti = emoti
+  def initialize(chat)
+    @chat = chat
   end
 
   def send_message(message)
@@ -10,6 +10,6 @@ class MessageSender
   private
 
   def client
-    @client ||= ChatApi::Gpt::PsychologyClient.new(@emoti)
+    @client ||= ChatApi::Gpt::PsychologyClient.new(@chat)
   end
 end

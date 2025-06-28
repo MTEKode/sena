@@ -8,9 +8,9 @@ class Chat
   embeds_many :messages
 
   def send_message(msg)
-    self.messages.create!(content: msg, sender: :user)
-    response = MessageSender.new(self.emoti).send_message(msg)
-    self.messages.create!(content: response, sender: :bot)
+    self.messages.create!(content: msg, role: :user)
+    response = MessageSender.new(self).send_message(msg)
+    self.messages.create!(content: response, role: :assistant)
     response
   rescue StandardError => e
     raise "Failed to send message: #{e.message}"

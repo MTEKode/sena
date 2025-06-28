@@ -1,59 +1,43 @@
-# Use the GraalVM TruffleRuby base image
-FROM ghcr.io/graalvm/truffleruby-community:latest
+FROM ruby:3.4.4-slim-bookworm
 
-# Update the system and install necessary dependencies
-RUN dnf update -y && \
-    dnf -y install gcc-c++ \
-    glibc-headers \
-    make \
-    patch \
+# 1. Instalar solo dependencias esenciales para Ruby/Rails
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpq-dev \
     libxml2 \
-    libxml2-devel \
-    libxslt \
-    libxslt-devel \
-    xz \
-    git \
-    vim \
-    curl \
-    dos2unix && \
-    dnf clean all
+    libxslt1.1 \
+    libyaml-0-2 \
+    zlib1g \
+    libssl3 \
+    postgresql-client \
+    nodejs npm \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install NVM and Node.js
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash
-ENV NVM_DIR /root/.nvm
-RUN . "$NVM_DIR/nvm.sh" && nvm install 24 && nvm use 24
+# 2. Configurar entorno de producción
+ENV RAILS_ENV=production \
+    BUNDLE_DEPLOYMENT=true \
+    BUNDLE_PATH="/usr/local/bundle" \
+    BUNDLE_WITHOUT="development:test"
 
-# Install Bundler and other necessary gems
-RUN gem install bundler
-
-# Create and set the working directory
+# 3. Directorio de trabajo
 WORKDIR /app
 
-# Copy application files to the container
-COPY Gemfile Gemfile.lock .env ./
+# 4. Instalar Bundler primero (versión estable)
+RUN gem install bundler -v 2.4.22
 
-# Configure bundle for PROD
-RUN bundle config set without 'development test'
-RUN bundle install
+# 5. Copiar e instalar dependencias Ruby
+COPY Gemfile Gemfile.lock ./
+RUN bundle install && \
+    rm -rf /usr/local/bundle/cache/*.gem && \
+    find /usr/local/bundle/gems/ -name "*.o" -delete
 
-# Copy the rest of the application files
+# 6. Copiar aplicación
 COPY . .
 
-# Convert line endings to Unix format
-RUN find . -type f -exec dos2unix {} \;
+# 7. Eliminar componentes innecesarios
+RUN rm -rf spec test tmp/* log/* .git* .github .vscode
 
-# Set the Rails environment to production
-ENV RAILS_ENV production
-
-# Generate secret_key_base and set it as an environment variable
-RUN echo "export SECRET_KEY_BASE=$(bundle exec rails secret)" >> /root/.bashrc
-ENV SECRET_KEY_BASE $(bundle exec rails secret)
-
-# Precompile assets for production with trace
-RUN bundle exec rails assets:precompile
-
-# Expose the port on which the Rails application will run
+# 8. Exponer puerto y configurar entrypoint
 EXPOSE 3000
-
-# Command to start the Rails server in production mode
-CMD ["bash", "-c", "source /root/.bashrc && bundle exec rails server -b '0.0.0.0' -p 3000 -e production"]
+ENTRYPOINT ["bundle", "exec"]
+CMD ["rails", "server", "-b", "0.0.0.0"]

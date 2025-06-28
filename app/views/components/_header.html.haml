@@ -1,15 +1,25 @@
 .header
   %h1
     %a{href: '/'}= I18n.t('sena')
-  %nav
-    %ul
-      %li
-        %a{href: '#'}= I18n.t('que_es_sena')
-      %li
-        = link_to(I18n.t('planes_precios'), subscriptions_path)
-      %li
-        %a{href: '#'}= I18n.t('quienes_somos')
-      - if user_signed_in?
-        = button_to I18n.t('cerrar_sesion'), logout_path, method: :delete
-      - else
-        = link_to I18n.t('iniciar_sesion'), login_path
+  - if user_signed_in?
+    = button_to logout_path, method: :delete, class: "logout-button" do
+      %span.icon.material-symbols-outlined logout
+
+
+
+.bottom-nav
+  - if user_signed_in?
+    %a.bottom-nav__item{href: dashboard_index_path, class: ("active" if current_page?(dashboard_index_path))}
+      %span.icon.material-symbols-outlined account_circle
+    %a.bottom-nav__item{href: chat_path('last'), class: ("active" if current_page?(chat_path('last')))}
+      %span.icon.material-symbols-outlined robot_2
+    %a.bottom-nav__item{href: "#"}
+      %span.icon.material-symbols-outlined settings
+  - else
+    %a.bottom-nav__item{href: root_path, class: ("active" if current_page?(root_path))}
+      %span.icon.material-symbols-outlined home
+    %a.bottom-nav__item{href: subscriptions_path, class: ("active" if current_page?(subscriptions_path))}
+      %span.icon.material-symbols-outlined subscriptions
+    %a.bottom-nav__item{href: login_path, class: ("active" if current_page?(login_path))}
+      %span.icon.material-symbols-outlined login
+

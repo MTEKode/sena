@@ -1,0 +1,73 @@
+@use 'vars'
+.questionnaire-container
+  margin: 0 auto
+  padding: 1rem
+  text-align: center
+  height: vars.$body-vh
+
+  .question-header
+    margin-bottom: 30px
+
+  h1
+    color: #333
+    margin-bottom: 20px
+
+  #question-container
+    background-color: #fff
+    padding: 20px
+    border-radius: 12px
+    margin-bottom: 20px
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
+    min-height: 100px
+    display: flex
+    align-items: center
+    justify-content: center
+    text-align: center
+
+  .options-container
+    margin-bottom: 20px
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    align-items: center
+    height: 450px
+
+    .option-button
+      display: block
+      padding: 15px
+      margin: 10px 0
+      border: none
+      border-radius: 12px
+      background-color: #e0e0e0
+      color: #333
+      font-size: 16px
+      cursor: pointer
+      transition: background-color 0.3s
+      width: 33vw
+      height: 20%
+
+      &:hover
+        background-color: #d0d0d0
+
+      &.selected
+        background-color: #4CAF50
+        color: white
+        border-color: #388E3C
+        font-weight: bold
+
+  .button-container
+    display: flex
+    justify-content: space-between
+
+    button
+      display: flex
+      background: none
+      border: none
+      font-size: 24px
+      cursor: pointer
+      color: #8a3ffc
+      padding: 10px
+
+      &:disabled
+        color: #ccc
+        cursor: not-allowed

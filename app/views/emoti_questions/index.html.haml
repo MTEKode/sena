@@ -1,0 +1,10 @@
+.questionnaire-container{data: { controller: "questionnaire", questionnaire_questions_value: @questions.to_json, questionnaire_send_questions_url_value: choose_emoti_emoti_questions_path } }
+  .question-header
+    %h1= I18n.t('emoti_q.title')
+    #question-container{data: { questionnaire_target: "questionContainer" }}
+  .options-container{data: { questionnaire_target: "optionsContainer" }}
+  .button-container
+    %button#prev-button{data: { action: "questionnaire#prevQuestion", questionnaire_target: "prevButton" }, disabled: true}
+      %span.icon.material-symbols-outlined arrow_back
+    %button#next-button{data: { action: "questionnaire#nextOrFinish", questionnaire_target: "nextButton" }}
+      %span.icon.material-symbols-outlined{ data: { questionnaire_target: "nextButtonIcon" }} check

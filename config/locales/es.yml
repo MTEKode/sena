@@ -6,6 +6,21 @@ es:
   quienes_somos: Quienes Somos?
   iniciar_sesion: Iniciar Sesión
   cerrar_sesion: Cerrar Sesión
+  find_your_emoti: Encuentra tu Emoti
+
+  home:
+    hero:
+      title: Tu espacio seguro de bienestar emocional
+      description1: Habla con un mentor emocional a tu ritmo.
+      description2: Interacciones humanas potenciadas con IA generativa.
+      button: Descubre tu Emoti
+    characters:
+      title: ¿Qué es SENA?
+      description: Es un espacio donde puedes explorar tus emociones de la mano de un mentor especializado, con total confianza y discreción.
+    testimonial:
+      title: ¿Por qué funciona?
+      description: Me siento comprendida. Hablar con los mentores de SENA es como escucharse a uno mismo, pero con más claridad.
+
   subscription:
     simple:
       name: Básica
@@ -50,4 +65,56 @@ es:
       submit: Entrar
       no_account: No tienes cuenta?
       create_account: Crear una cuenta
+  chats:
+    write_your_msg: Escribeme...
+  emoti_q:
+    title: Cuestionario
+    emotional_state: ¿Cómo te sientes emocionalmente hoy?
+    support_type: ¿Qué tipo de apoyo necesitas en este momento?
+    specific_event: ¿Hay algún evento específico que te esté afectando?
+    overwhelmed_frequency: ¿Con qué frecuencia te sientes abrumado?
+    helpful_activities: ¿Qué actividades te han sido más útiles últimamente?
+    mentor_style: ¿Qué estilo prefieres en un mentor?
+    specific_topic: ¿Hay algún tema específico en el que te gustaría enfocarte?
+    mentor_goal: ¿Cuál es tu objetivo al buscar un mentor?
+
+    triste: Triste
+    ansioso: Ansioso
+    estresado: Estresado
+    confundido: Confundido
+    feliz: Feliz
+    neutral: Neutral
+    escucha: Alguien que escuche
+    consejos: Consejos prácticos
+    motivacion: Motivación
+    comprension: Comprensión y empatía
+    manejo_estres: Ayuda para manejar el estrés
+    trabajo: Sí, en el trabajo
+    casa: Sí, en casa
+    relaciones: Sí, en mis relaciones personales
+    general: No, es algo general
+    no_decir: Prefiero no decir
+    rara_vez: Rara vez
+    a_veces: A veces
+    frecuentemente: Frecuentemente
+    siempre: Siempre
+    hablar_amigos: Hablar con amigos o familiares
+    ejercicio: Ejercicio físico
+    meditacion: Meditación o mindfulness
+    leer: Leer o aprender algo nuevo
+    musica: Escuchar música o ver películas
+    directo: Directo y práctico
+    suave: Suave y empático
+    combinacion: Una combinación de ambos
+    autoestima: Autoestima
+    manejo_estres_topic: Manejo del estrés
+    ansiedad: Ansiedad
+    depresion: Depresión
+    otros: Otros (por favor, especifica)
+    tranquilo: Sentirme más tranquilo/a
+    mejorar_relaciones: Mejorar mis relaciones
+    claridad: Encontrar claridad en mis pensamientos
+    habilidades_emociones: Desarrollar habilidades para manejar mis emociones
+
+
 

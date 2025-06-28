@@ -65,6 +65,10 @@ class User
   end
 
   def active_emotis
-    Emoti.actives.where(id: active_subscription.emoti_ids) if active_subscription
+    Emoti.actives.where(:id.in => active_subscription.emoti_ids) if active_subscription
+  end
+
+  def find_last_chat
+    self.chats.order(updated_at: :asc).last
   end
 end

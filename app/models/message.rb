@@ -3,7 +3,7 @@ class Message
   include Mongoid::Timestamps
 
   field :content, type: String
-  field :sender, type: StringifiedSymbol
+  field :role, type: StringifiedSymbol
 
   embedded_in :chat
 end

@@ -32,4 +32,10 @@ class SubscriptionUser
       paid_at: nil
     )
   end
+
+  def update_emoti_ids(new_emoti_ids)
+    self.emoti_ids.concat(new_emoti_ids)
+    self.emoti_ids.map!(&:to_s).uniq
+    self.save!
+  end
 end

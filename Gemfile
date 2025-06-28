@@ -56,4 +56,6 @@ gem 'rack-cors', '~> 3.0'
 gem 'http', '~> 5.3', '>= 5.3.1'
 gem 'concurrent-ruby', '~> 1.3', '>= 1.3.5'
 gem 'dotenv-rails', '~> 3.1', '>= 3.1.8'
+gem 'redcarpet', '~> 3.6', '>= 3.6.1'
+gem 'pycall', '~> 1.5', '>= 1.5.2'
 

@@ -1,3 +1,24 @@
-= render 'components/hero'
-= render 'components/section'
-= render 'components/testimonial'
+.home-container{data: { controller: "home" }}
+  .hero{style: "--main-emoti-url: url('#{image_url("emotis/#{@main_amoti.key}.png")}')"}
+    .hero-text
+      %h2= I18n.t('home.hero.title')
+      %p= I18n.t('home.hero.description1')
+      %p= I18n.t('home.hero.description2')
+      %button= I18n.t('home.hero.button')
+
+  .characters-section
+    .wrap
+      %h2= I18n.t('home.characters.title')
+      %p= I18n.t('home.characters.description')
+      .characters-glide
+        = content_tag :div, data: { glide_el: "track" }, class: "glide__track" do
+          = content_tag :ul, class: "glide__slides" do
+            - @emotis.each do |emoti|
+              = content_tag :li, class: "glide__slide" do
+                .character
+                  .img-container
+                    %img{alt: emoti.name, src: image_path("emotis/#{emoti.key}.png")}
+                  .info-container
+                    %h3= emoti.name
+                    %p= emoti.title
+                    %p.quote= "'#{emoti.quote}'"

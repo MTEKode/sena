@@ -121,7 +121,6 @@
     <orderEntry type="library" scope="PROVIDED" name="rails-html-sanitizer (v1.6.2, Remote: ruby-truffleruby 24.2.1, like ruby 3.3.7, GraalVM CE Native p0-p0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="railties (v8.0.2, Remote: ruby-truffleruby 24.2.1, like ruby 3.3.7, GraalVM CE Native p0-p0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v13.3.0, Remote: ruby-truffleruby 24.2.1, like ruby 3.3.7, GraalVM CE Native p0-p0) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rdoc (v6.14.0, Remote: ruby-truffleruby 24.2.1, like ruby 3.3.7, GraalVM CE Native p0-p0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="redis (v5.4.0, Remote: ruby-truffleruby 24.2.1, like ruby 3.3.7, GraalVM CE Native p0-p0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="redis-client (v0.24.0, Remote: ruby-truffleruby 24.2.1, like ruby 3.3.7, GraalVM CE Native p0-p0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="regexp_parser (v2.10.0, Remote: ruby-truffleruby 24.2.1, like ruby 3.3.7, GraalVM CE Native p0-p0) [gem]" level="application" />

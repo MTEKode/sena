@@ -1,0 +1,76 @@
+@use "../vars"
+.home-container
+  height: vars.$body-vh
+  .hero
+    display: flex
+    position: relative
+    padding: 1rem
+    background-color: vars.$secondary-color
+    background-position: center
+    overflow: hidden
+    &::before
+      content: ''
+      position: absolute
+      top: 0
+      right: 0
+      bottom: 0
+      left: 0
+      background-size: 75vw
+      background-position: right bottom
+      background-repeat: no-repeat
+      opacity: 0.5
+      background-image: var(--main-emoti-url)
+    .hero-text
+      display: flex
+      flex: 1
+      flex-direction: column
+      align-items: start
+      justify-content: center
+      text-align: left
+      max-width: 80%
+      padding: 0.4rem
+
+      h2
+        font-size: 1.9rem
+        color: vars.$primary-color
+
+      p
+        font-size: 1.2rem
+
+      button
+        background-color: vars.$primary-color
+        color: white
+        border: none
+        padding: 0.8rem 1.5rem
+        border-radius: 25px
+        font-size: 1rem
+        cursor: pointer
+
+    .hero-image
+      flex: 1
+      display: flex
+      justify-content: center
+      align-items: center
+      max-height: 100%
+
+  .characters-section
+    padding: 1rem
+    .characters-glide
+      padding: 0.5rem
+      .character
+        .info-container
+          padding: .5rem
+          text-align: center
+
+  .testimonial
+    padding: 1rem
+    text-align: center
+
+    button
+      background-color: vars.$primary-color
+      color: white
+      border: none
+      padding: 0.8rem 1.5rem
+      border-radius: 25px
+      font-size: 1rem
+      cursor: pointer

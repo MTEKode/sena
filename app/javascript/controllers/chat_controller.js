@@ -3,12 +3,16 @@ import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
     static targets = ["messages", "inputField", "sendButton"];
-    static values = { chatId: String };
+    static values = {
+        chatId: String,
+        emotiImgUrl: String
+    };
 
     connect() {
         this.setupEventListeners();
         this.locked = false; // Estado para controlar si el chat está bloqueado
         window.addMessage = this.addMessage.bind(this);
+        this.scrollToBottom();
     }
 
     setupEventListeners() {
@@ -35,9 +39,6 @@ export default class extends Controller {
             this.addMessage('user', messageContent);
             this.inputFieldTarget.value = '';
 
-            // Obtener el ID del chat
-            const chatId = this.chatIdValue;
-
             // Enviar mensaje al servidor usando fetch
             fetch('/chat', {
                 method: 'POST',
@@ -46,18 +47,18 @@ export default class extends Controller {
                     'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
                 },
                 body: JSON.stringify({
-                    chat: { id: chatId },
+                    chat: { id: this.chatIdValue },
                     message: { content: messageContent }
                 })
             })
                 .then(response => response.json())
                 .then(data => {
                     // Agregar la respuesta del bot al chat
-                    window.addMessage('bot', data.message);
+                    this.addMessage('assistant', data.message);
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    window.addMessage('bot', 'Lo siento, hubo un error al procesar tu mensaje.');
+                    this.addMessage('assistant', 'Lo siento, hubo un error al procesar tu mensaje.');
                 })
                 .finally(() => {
                     // Desbloquear el chat después de recibir la respuesta o un error
@@ -68,15 +69,39 @@ export default class extends Controller {
         }
     }
 
-    addMessage(sender, text) {
+    addMessage(role, text) {
         const messageDiv = document.createElement('div');
-        messageDiv.classList.add('message', sender);
-        messageDiv.textContent = text;
+        messageDiv.classList.add('message', role);
+
+        if (role === 'assistant') {
+            const emotiImage = document.createElement('img');
+            emotiImage.src = this.emotiImgUrlValue;
+            emotiImage.alt = 'Emoti';
+            messageDiv.appendChild(emotiImage);
+        }
+
+        const msgContentWrap = document.createElement('div');
+        msgContentWrap.classList.add('msg-content-wrap');
+
+        const msgContent = document.createElement('div');
+        msgContent.classList.add('msg-content');
+        msgContent.innerHTML = text;
+
+        const timestamp = document.createElement('div');
+        timestamp.classList.add('timestamp');
+        timestamp.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+        msgContentWrap.appendChild(msgContent);
+        msgContentWrap.appendChild(timestamp);
+
+        messageDiv.appendChild(msgContentWrap);
+
         this.messagesTarget.appendChild(messageDiv);
-        this.messagesTarget.scrollTop = this.messagesTarget.scrollHeight;
+        this.scrollToBottom();
     }
 
-    get chatIdValue() {
-        return document.getElementById('chat-id').value;
+    scrollToBottom() {
+        // Desplazar el contenedor de mensajes hacia abajo
+        this.messagesTarget.scrollTop = this.messagesTarget.scrollHeight;
     }
 }

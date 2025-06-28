@@ -29,5 +29,15 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
   resources :dashboard, only: [:index]
   resources :chat, only: [:show, :create]
+  resources :emoti, only: [:index] do
+    collection do
+      get 'selection'
+    end
+  end
+  resources :emoti_questions, only: [:index] do
+    collection do
+      post 'choose_emoti'
+    end
+  end
 end
 

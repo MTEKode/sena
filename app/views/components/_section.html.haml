@@ -1,6 +1,0 @@
-.section
-  %h2 ¿Qué es SENA?
-  %p Es un espacio donde puedes explorar tus emociones de la mano de un mentor especializado, con total confianza y discreción.
-  .characters
-    - @emotis.each do |emoti|
-      = render 'components/emoti', { name: emoti.name, title: emoti.title, quote: "'#{emoti.quote}'", image_alt: emoti.name, image_src: image_path("emotis/#{emoti.key}.png") }

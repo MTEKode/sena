@@ -3,6 +3,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
     volumes:
       - .:/app
     ports:

@@ -1,13 +1,22 @@
-.chat-container{data: {controller: "chat"}}
-  = hidden_field_tag 'chat-id', @chat.id.to_s
+.chat-container{data: {
+    controller: "chat",
+    chat_emoti_img_url_value: image_path("emotis/#{@chat.emoti.key}_half.png"),
+    chat_chat_id_value: @chat.id
+  }
+}
   .chat-header
     %h2= @chat.emoti.name
+    = image_tag "emotis/#{@chat.emoti.key}_half.png"
   .chat-messages{data: {chat_target: "messages"}, id: "chat-messages"}
     - @chat.messages.order_by(created_at: :asc).each do |message|
-      .message{class: message.sender == :user ? 'user' : 'bot'}
-        =raw message.content
-        .timestamp
-          = message.created_at.strftime("%H:%M")
+      .message{class: message.role == :user ? 'user' : 'assistant'}
+        = image_tag "emotis/#{@chat.emoti.key}_half.png"
+        .msg-content-wrap
+          .msg-content
+            =raw(markdown(message.content))
+          .timestamp
+            = message.created_at.strftime("%H:%M")
   .chat-input
-    %input#user-input{type: "text", placeholder: "Escribe tu mensaje...", data: {chat_target: "inputField"}}
-    %button#send-button{data: {chat_target: "sendButton"}} Enviar
+    %input#user-input{type: "text", placeholder: I18n.t('chats.write_your_msg'), data: {chat_target: "inputField"}}
+    %button#send-button{type: 'button', data: {chat_target: "sendButton"}}
+      %span.material-symbols-outlined send
