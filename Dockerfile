@@ -38,6 +38,13 @@ COPY . .
 # 7. Eliminar componentes innecesarios
 RUN rm -rf spec test tmp/* log/* .git* .github .vscode
 
+# Generate secret_key_base and set it as an environment variable
+RUN echo "export SECRET_KEY_BASE=$(bundle exec rails secret)" >> /root/.bashrc
+ENV SECRET_KEY_BASE $(bundle exec rails secret)
+
+# Precompile assets for production with trace
+RUN bundle exec rails assets:precompile
+
 # 8. Exponer puerto y configurar entrypoint
 EXPOSE 3000
 ENTRYPOINT ["bundle", "exec"]
