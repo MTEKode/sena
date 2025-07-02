@@ -65,7 +65,7 @@ class User
   end
 
   def active_emotis
-    Emoti.actives.where(:id.in => active_subscription.emoti_ids) if active_subscription&.emoti_ids.present?
+    Emoti.actives.where(:id.in => active_subscription.emoti_ids) unless active_subscription&.emoti_ids.empty?
   end
 
   def find_last_chat
