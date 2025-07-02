@@ -5,15 +5,20 @@
   }
 }
   .chat-header
-    %h2= @chat.emoti.name
-    = image_tag "emotis/#{@chat.emoti.key}_half.png"
+    = render partial: 'components/emoti_mini_selector'
   .chat-messages{data: {chat_target: "messages"}, id: "chat-messages"}
+    = image_tag "emotis/#{@chat.emoti.key}_half.png", alt: "#{@chat.emoti.name}", class: "img-main-emoti"
+    .message{class: 'assistant'}
+      .msg-content-wrap
+        .msg-content
+          = raw(markdown(@chat.emoti.initial_message))
     - @chat.messages.order_by(created_at: :asc).each do |message|
       .message{class: message.role == :user ? 'user' : 'assistant'}
-        = image_tag "emotis/#{@chat.emoti.key}_half.png"
+        - if message.role == :assistant
+          = image_tag "emotis/#{@chat.emoti.key}_half.png", alt: "#{@chat.emoti.name}"
         .msg-content-wrap
           .msg-content
-            =raw(markdown(message.content))
+            = raw(markdown(message.content))
           .timestamp
             = message.created_at.strftime("%H:%M")
   .chat-input

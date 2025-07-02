@@ -10,6 +10,7 @@ class Emoti
   field :description, type: String
   field :prompt, type: String
   field :key, type: String
+  field :initial_message, type: String, default: 'emoti.initial_message'
   field :active, type: Boolean, default: true
 
   validates_uniqueness_of :key
