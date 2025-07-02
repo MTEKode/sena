@@ -44,6 +44,9 @@ if docker ps -a --format '{{.Names}}' | grep -q "^${CONTAINER_NAME}$"; then
   docker rm "$CONTAINER_NAME"
 fi
 
+echo "Pulling desde github"
+git pull
+
 # 4. Construir la nueva imagen
 echo "Construyendo nueva imagen Docker..."
 docker build -t "$IMAGE_NAME" .
