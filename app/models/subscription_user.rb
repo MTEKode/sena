@@ -10,7 +10,7 @@ class SubscriptionUser
   field :subscription_price, type: Float
   field :subscription_duration, type: Integer
 
-  field :emoti_ids, type: Array
+  field :emoti_ids, type: Array, default: []
 
   # Campos originales de SubscriptionUser
   field :until, type: Date
