@@ -21,7 +21,14 @@ es:
       title: ¿Por qué funciona?
       description: Me siento comprendida. Hablar con los mentores de SENA es como escucharse a uno mismo, pero con más claridad.
 
+  dashboard:
+    fecha_expiracion: 'Fecha expiración: %{date}'
+
   subscription:
+    your_plan: Tu Plan
+    active: Activo
+    inactive: No activo
+    upgrade: Aumentar
     simple:
       name: Básica
       desc: Subscription Básica

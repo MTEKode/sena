@@ -6,9 +6,10 @@
       %h2.form-title= I18n.t("users.new.title")
       %p.form-description= I18n.t("users.new.description")
     .space-y-6
-      .form-group
+      .form-group.field
         = form.label :full_name, I18n.t("users.new.name_placeholder"), class: "form-label"
-        = form.text_field :full_name, class: "form-input", required: true, autocomplete: "name", placeholder: I18n.t("users.new.name_placeholder")
+        .control
+          = form.text_field :full_name, class: "input form-input", required: true, autocomplete: "name", placeholder: I18n.t("users.new.name_placeholder")
 
       .form-group
         = form.label :email, I18n.t("users.new.email_placeholder"), class: "form-label"

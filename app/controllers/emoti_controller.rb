@@ -1,7 +1,7 @@
 class EmotiController < ApplicationController
 
   def index
-    @emotis = current_user.active_emotis
+    helpers.load_current_user_emotis
   end
 
   def selection

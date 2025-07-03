@@ -1,28 +1,31 @@
-.form-container
+%section.section.form-container
   = form_for(resource, as: resource_name, url: login_path) do |f|
-    .text-center
-      %h2.form-title= I18n.t("users.sessions.title")
-      %p.form-description= I18n.t("users.sessions.description")
+    .text-center.mb-6
+      %p.title.is-4= I18n.t("users.sessions.title")
+      %p.subtitle.is-6= I18n.t("users.sessions.description")
 
-    .space-y-6
-      .form-group
+    .field
+      .control
         = f.label :email, class: "form-label" do
           = I18n.t("users.new.email_placeholder")
-          = f.email_field :email, class: "form-input", required: true, autocomplete: "email", placeholder: I18n.t("users.new.email_placeholder")
+          = f.email_field :email, class: "input form-input", required: true, autocomplete: "email", placeholder: I18n.t("users.new.email_placeholder")
 
-      .form-group
+    .field
+      .control
         = f.label :password, class: "form-label" do
           = I18n.t("users.new.password_placeholder")
-          = f.password_field :password, class: "form-input", required: true, autocomplete: "current-password", placeholder: I18n.t("users.new.password_placeholder")
+          = f.password_field :password, class: "input form-input", required: true, autocomplete: "current-password", placeholder: I18n.t("users.new.password_placeholder")
 
-      .form-group
-        - if devise_mapping.rememberable?
-          = f.label :remember_me, class: "form-checkbox-label" do
+    .field
+      - if devise_mapping.rememberable?
+        .control
+          = f.label :remember_me, class: "checkbox form-checkbox-label" do
             = I18n.t("users.sessions.remember_me")
-            = f.check_box :remember_me, class: "form-checkbox"
+            = f.check_box :remember_me
 
-      .form-group
-        = f.submit I18n.t("users.sessions.submit"), class: "btn-submit"
+    .field
+      .control
+      = f.submit I18n.t("users.sessions.submit"), class: "button is-primary is-fullwidth"
 
     %p.login-prompt
       = I18n.t("users.sessions.no_account")

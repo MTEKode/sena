@@ -1,17 +1,18 @@
 .emoti-container{data: { controller: "emoti" }}
   %section.emotis-section
-    .wrap
-      %h4 Elige un Emoti
-      .emotis-glide
-        = content_tag :div, data: { glide_el: "track" }, class: "glide__track" do
-          = content_tag :ul, class: "glide__slides" do
-            - @emotis.each do |emoti|
-              = content_tag :li, class: "glide__slide" do
-                .emoti-card
-                  .emoti-actions
-                    %p.emoti-description= emoti.quote
-                    %a.emoti-open-chat{href: chat_path(emoti.id)} HABLAR
-                  .emoti-card-info
-                    %h3= emoti.name
-                  .emoti-card-image
-                    = image_tag "emotis/#{emoti.key}.png"
+    .emotis-glide
+      = content_tag :div, data: { glide_el: "track" }, class: "glide__track" do
+        = content_tag :ul, class: "glide__slides" do
+          - @emotis.each do |emoti|
+            = content_tag :li, class: "glide__slide" do
+              .card
+                .card-image
+                  .image.is-1by1
+                    =image_tag "emotis/#{emoti.key}.png"
+                .card-content
+                  .media
+                    .media-content
+                      %p.title.is-4= emoti.name
+                      %p.subtitle.is-6= emoti.quote
+                  .content
+                    %a{href: chat_path(emoti.id)} HABLAR

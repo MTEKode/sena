@@ -1,19 +1,27 @@
-.dashboard-container{data: { controller: "dashboard" }}
+%section.section.dashboard-container{data: { controller: "dashboard" }}
   .welcome-info
     .welcome-info-wrapper
       = link_to chat_path('last') do
         = image_tag 'emotis/emoti.png', alt: 'emoti'
       .welcome-info-text
         %p
-  .user-info
+  %section.section.user-info.has-text-centered
     .subscription-info
-      %h3= I18n.t('subscription.your_plan')
       - if current_user.active_subscription.present?
-        %p.status.active= I18n.t('subscription.active')
-        %p.expiry= "Fecha de expiración: #{current_user.active_subscription.until.strftime("%d/%m/%Y")}"
+        %p.title.is-4.is-flex.is-align-items-center.is-justify-content-center
+          = I18n.t('subscription.your_plan')
+          %span.tag.is-success.ml-2= I18n.t('subscription.active')
+        %p= I18n.t('dashboard.fecha_expiracion', date: current_user.active_subscription.until.strftime("%d/%m/%Y"))
+        %p.expiry= I18n.t('dashboard.fecha_expiracion', date: current_user.active_subscription.until.strftime("%d/%m/%Y"))
         %p.days-left= "Días restantes: #{(current_user.active_subscription.until - Date.today).to_i}"
-        = link_to I18n.t('subscription.upgrade'), 'subscriptions_path', class: "renew-link"
+        = link_to I18n.t('subscription.upgrade'), 'subscriptions_path', class: "button is-success"
       - else
-        %p.status.inactive Estatus: Inactiva
+        %p.title.is-4
+          = I18n.t('subscription.your_plan')
+          %span.tag.is-danger= I18n.t('subscription.inactive')
         = link_to I18n.t('subscription.renew'), 'subscriptions_path', class: "renew-link"
+
+  %section.section
+    = render partial: 'emoti/emoti_carousel'
+
 

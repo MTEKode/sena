@@ -7,7 +7,7 @@
   margin: auto
   overflow: hidden
   font-family: 'Arial', sans-serif
-  height: vars.$body-vh
+  height: 100vh
 
   .chat-header
     padding: 0
@@ -21,7 +21,6 @@
 
   .chat-messages
     flex: 1
-    padding: 1vh 3vw
     overflow-y: auto
     scroll-behavior: smooth
     .img-main-emoti
@@ -35,12 +34,11 @@
         display: flex
         flex-direction: column
         .msg-content
-          padding: 10px 15px
           border-radius: 18px
           word-wrap: break-word
           font-size: 1rem
           line-height: 1.4
-          max-width: 77vw
+          max-width: 69vw
         .timestamp
           font-size: .8rem
 
@@ -49,6 +47,7 @@
         .msg-content-wrap
           align-items: end
         .msg-content
+          padding: 10px 15px
           margin-left: auto
           margin-right: 0
           border-bottom-right-radius: 4px
