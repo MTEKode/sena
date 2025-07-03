@@ -8,12 +8,8 @@ class ChatController < ApplicationController
 
   def create
     load_chat
-    response = @chat.send_message(message_params[:content])
-    if @chat.save!
-      render json: { message: response, role: 'user' }, status: :created
-    else
-      render json: { errors: @message.errors.full_messages }, status: :unprocessable_entity
-    end
+    @response = @chat.send_message(message_params[:content])
+    @chat.save!
   end
 
   private

@@ -9,7 +9,7 @@ module ChatApi
 
       def send_message(message)
         request_body = {
-          model: 'gpt-3.5-turbo',
+          model: 'gpt-4o-mini',
           messages: prepare_messages(message)
         }
         send_request(request_body)
@@ -23,9 +23,10 @@ module ChatApi
           content: "#{@chat.emoti.prompt}"
         }
 
+        # TODO Añadir los mensajes restantes(DE LA SESION)
         predefined_messages = [
-          { role: 'system', content: 'Recuerda siempre basar tus respuestas en evidencia científica y ser empático.' },
-          { role: 'system', content: 'Si el usuario menciona pensamientos suicidas, proporciona recursos de emergencia y sugiere buscar ayuda inmediata.' }
+          { role: 'system', content: 'Responde siempre de manera breve y concisa pero sin omitir informacion.' },
+          { role: 'system', content: 'Responde siempre en formato MARKDOWN' },
         ]
 
         conversation_history = @chat.messages.map { |msg| { role: msg.role, content: msg.content } }

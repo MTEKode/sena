@@ -18,7 +18,7 @@
           = image_tag "emotis/#{@chat.emoti.key}_half.png", alt: "#{@chat.emoti.name}"
         .msg-content-wrap
           .msg-content
-            = raw(markdown(message.content))
+            %p= raw(markdown(message.content))
           .timestamp
             = message.created_at.strftime("%H:%M")
   .chat-input

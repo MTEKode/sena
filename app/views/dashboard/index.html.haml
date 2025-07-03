@@ -1,17 +1,19 @@
 .dashboard-container{data: { controller: "dashboard" }}
-  %section.user-section
-    .user-info
-      %h2 Bienvenido,
-      %p.user-name= current_user.full_name || current_user.email
-      %p.user-email= current_user.email
-      .subscription-info
-        %h3 Suscripción
-        - if current_user.active_subscription.present?
-          %p.status.active Estatus: Activa
-          %p.expiry= "Fecha de expiración: #{current_user.active_subscription.until.strftime("%d/%m/%Y")}"
-          %p.days-left= "Días restantes: #{(current_user.active_subscription.until - Date.today).to_i}"
-          = link_to "Renovar suscripción", 'subscriptions_path', class: "renew-link"
-        - else
-          %p.status.inactive Estatus: Inactiva
-          %md-filled-button Renovar suscripción
-          = link_to "Renovar suscripción", 'subscriptions_path', class: "renew-link"
+  .welcome-info
+    .welcome-info-wrapper
+      = link_to chat_path('last') do
+        = image_tag 'emotis/emoti.png', alt: 'emoti'
+      .welcome-info-text
+        %p
+  .user-info
+    .subscription-info
+      %h3= I18n.t('subscription.your_plan')
+      - if current_user.active_subscription.present?
+        %p.status.active= I18n.t('subscription.active')
+        %p.expiry= "Fecha de expiración: #{current_user.active_subscription.until.strftime("%d/%m/%Y")}"
+        %p.days-left= "Días restantes: #{(current_user.active_subscription.until - Date.today).to_i}"
+        = link_to I18n.t('subscription.upgrade'), 'subscriptions_path', class: "renew-link"
+      - else
+        %p.status.inactive Estatus: Inactiva
+        = link_to I18n.t('subscription.renew'), 'subscriptions_path', class: "renew-link"
+
