@@ -3,6 +3,7 @@
   "target": {
     "namespace": "android_app",
     "package_name": "store.legas.sena.twa",
-    "sha256_cert_fingerprints": ["A296C472E5AF3B0E00AE3C474435CF1A09462736A12ECDAB66B20920286C28AB"]
+    "sha256_cert_fingerprints": ["a296c472e5af3b0e00ae3c474435cf1a09462736a12ecdab66b2092086287cab"]
   }
 }]
+
