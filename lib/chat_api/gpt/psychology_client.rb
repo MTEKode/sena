@@ -25,12 +25,12 @@ module ChatApi
 
         # TODO Añadir los mensajes restantes(DE LA SESION)
         predefined_messages = [
-          { role: 'system', content: 'Responde siempre de manera breve y concisa pero sin omitir informacion.' },
-          { role: 'system', content: 'Responde siempre en formato MARKDOWN' },
+          { role: 'system', content: 'IMPORTANTE!!! SOLO RESPONDER A TEMAS RELACIONADOS CON PSICOLOGIA!!!' },
+          { role: 'system', content: 'SE BREVE CONCISO Y EMPATICO. RESPONDE SIEMPRE EN MARKDOWN' }
         ]
 
         conversation_history = @chat.messages.map { |msg| { role: msg.role, content: msg.content } }
-        [system_message] + predefined_messages + conversation_history + [{ role: 'user', content: current_message }]
+        [system_message] + conversation_history + [{ role: 'user', content: current_message }] + predefined_messages
       end
     end
   end

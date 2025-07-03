@@ -5,9 +5,8 @@
   justify-content: space-between
   align-items: center
   padding: 0.5rem 2rem
-  background-color: vars.$brand-purple-light
-  color: vars.$brand-purple
   height: vars.$nav-vh
+  color: vars.$brand-purple-light
   a
     text-decoration: none
     color: inherit
@@ -21,15 +20,9 @@
     display: flex
 
 .bottom-nav
-  position: fixed
-  left: 0
-  bottom: 0
-  right: 0
-  z-index: 999
   display: flex
   justify-content: space-around
   align-items: center
-  background-color: #ffffff
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1)
   height: vars.$nav-vh
 
@@ -38,7 +31,6 @@
     flex-direction: column
     align-items: center
     justify-content: center
-    color: #888
     text-decoration: none
     font-size: 10px
 
@@ -47,7 +39,7 @@
       margin-bottom: 4px
 
     &.active
-      color: #007bff
+      color: vars.$brand-purple
 
     &:hover
-      color: #007bff
+      color: vars.$brand-purple

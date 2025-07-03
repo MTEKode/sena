@@ -17,6 +17,7 @@ Rails.application.configure do
   config.hosts << "host.docker.internal"
   config.hosts << "localhost"
   config.hosts << "0.0.0.0"
+  config.hosts << "a941-62-83-12-14.ngrok-free.app"
 
   # Configuración de web console
   config.web_console.whitelisted_ips = ['0.0.0.0', '127.0.0.1', '172.19.0.1', '0.0.0.0', '37.223.242.100', '172.21.0.1', '172.18.0.1']

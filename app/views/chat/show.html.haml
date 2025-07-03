@@ -1,4 +1,4 @@
-.chat-container{data: {
+%section.chat-container.is-flex-direction-column{data: {
     controller: "chat",
     chat_emoti_img_url_value: image_path("emotis/#{@chat.emoti.key}_half.png"),
     chat_chat_id_value: @chat.id
@@ -21,7 +21,11 @@
             %p= raw(markdown(message.content))
           .timestamp
             = message.created_at.strftime("%H:%M")
-  .chat-input
-    %input#user-input{type: "text", placeholder: I18n.t('chats.write_your_msg'), data: {chat_target: "inputField"}}
-    %button#send-button{type: 'button', data: {chat_target: "sendButton"}}
-      %span.material-symbols-outlined send
+
+  .chat-input.is-flex.field.has-addons.is-align-items-center
+    .control.is-expanded
+      %input.input{type: "text", placeholder: I18n.t('chats.write_your_msg'), data: {chat_target: "inputField"}}
+    .control
+      %button.button.is-primary{type: 'button', data: {chat_target: "sendButton"}}
+        %span.icon
+          %i.material-symbols-outlined send

@@ -146,6 +146,9 @@ export default class extends Controller {
   }
 
   scrollToBottom() {
-    this.messagesTarget.scrollTop = this.messagesTarget.scrollHeight;
+    this.messagesTarget.scrollTo({
+      top: this.messagesTarget.scrollHeight,
+      behavior: 'smooth'
+    });
   }
 }

@@ -9,7 +9,7 @@ class Chat
 
   def send_message(msg)
     self.messages.create!(content: msg, role: :user)
-    response = MessageSender.new(self).send_message(msg)
+    response = ChatApi::Gpt::PsychologyClient.new(self).send_message(msg)
     self.messages.create!(content: response, role: :assistant)
     response
   rescue StandardError => e

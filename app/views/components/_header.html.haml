@@ -1,4 +1,4 @@
-.header
+%nav.header.navbar.is-fixed-top.has-background-primary
   %h1
     %a{href: '/'}= I18n.t('sena')
   - if user_signed_in?
@@ -7,7 +7,7 @@
 
 
 
-.bottom-nav
+%nav.bottom-nav.navbar.is-fixed-bottom
   - if user_signed_in?
     %a.bottom-nav__item{href: dashboard_index_path, class: ("active" if current_page?(dashboard_index_path))}
       %span.icon.material-symbols-outlined account_circle

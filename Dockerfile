@@ -32,6 +32,9 @@ RUN bundle install && \
     rm -rf /usr/local/bundle/cache/*.gem && \
     find /usr/local/bundle/gems/ -name "*.o" -delete
 
+COPY package.json package-lock.json ./
+RUN npm install
+
 # 6. Copiar aplicación
 COPY . .
 
