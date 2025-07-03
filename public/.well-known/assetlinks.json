@@ -1,13 +1,8 @@
-{
-  "statements": [
-    {
-      "relation": "delegate_permission/common.handle_all_urls",
-      "target": {
-        "namespace": "android_app",
-        "package_name": "store.legas.sena.twa",
-        "sha256_certificate_hashes": ["A296C472E5AF3B0E00AE3C474435CF1A09462736A12ECDAB66B20920286C28AB"]
-      }
-    }
-  ],
-  "maxAge": "3600s"
-}
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "store.legas.sena.twa",
+    "sha256_certificate_hashes": ["A296C472E5AF3B0E00AE3C474435CF1A09462736A12ECDAB66B20920286C28AB"]
+  }
+}]
